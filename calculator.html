@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>KR Logistics</title>
+</head>
+
+<body>
+    <div class="app">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><i class="fa-solid fa-truck"></i> KR Logistics</a>
+            </div>
+            <div class="toggle">
+                <a href="#"><i class="fa-solid fa-bars"></i></a>
+            </div>
+            <ul class="menu">
+                <li><a href="index.html" class="hoverline">Strona główna</a></li>
+                <li><a href="calculator.html" class="hoverline">Kalkulator</a></li>
+                <li><a href="definitions.html" class="hoverline">Definicje</a></li>
+                <li><a href="tutorials.html" class="hoverline">Poradniki</a></li>
+                <li><a href="tasks.html" class="hoverline">Zadania</a></li>
+                <li><a href="changelog.html" class="hoverline">Changelog</a></li>
+                <li><a onclick="ToggleCalculator()" style="font-weight: 600;">Odpal kalkulator</a></li>
+            </ul>
+        </nav>
+        <div class="line"></div>
+        <div class="view">
+            <div class="calculator-nav">
+                <div class="calculator-nav-option selected" id="packcalc">Paczki</div>
+                <div class="calculator-nav-option" id="drivertimecalc">Czas pracy kierwocy</div>
+            </div>
+            <div class="calculator-container" id="packscalc">
+                <div class="calculator-wrapper">
+                    <div class="input-title">
+                        <i class="fa-regular fa-swatchbook"></i>
+                        <span>Wymiary Przestrzeni ładunkowej [mm]</span>
+                    </div>
+                    <div class="inputs">
+                        <input type="text" placeholder="Długość" id="pjllength">
+                        <input type="text" placeholder="Szerokość" id="pjlwidth">
+                        <input type="text" placeholder="Wysokość" id="pjlheight">
+                        <input type="text" placeholder="Maksymalne obciążenie" id="pjlmaxweight">
+                    </div>
+                </div>
+                <div class="calculator-wrapper">
+                    <div class="input-title">
+                        <i class="fa-regular fa-pallet-boxes"></i>
+                        <span>Wymiary Palety [mm]</span>
+                    </div>
+                    <div class="inputs">
+                        <input type="text" placeholder="Długość" id="paletelength">
+                        <input type="text" placeholder="Szerokość" id="paletewidth">
+                        <input type="text" placeholder="Wysokość" id="paleteheight">
+                        <input type="text" placeholder="Masa [kg]" id="paleteweight">
+                        <input type="text" placeholder="Maksymalna ilość Warstw" id="maxpaletelayers">
+                    </div>
+                </div>
+                <div class="calculator-wrapper">
+                    <div class="input-title">
+                        <i class="fa-regular fa-box"></i>
+                        <span>Wymiary Paczki [mm]</span>
+                    </div>
+                    <div class="inputs">
+                        <input type="text" placeholder="Długość" id="packlength">
+                        <input type="text" placeholder="Szerokość " id="packwidth">
+                        <input type="text" placeholder="Wysokość" id="packheight">
+                        <input type="text" placeholder="Masa [kg]" id="packweight">
+                    </div>
+                </div>
+                <div class="calculator-results">
+                    <div class="calculator-results-title">Wyniki obliczeń</div>
+                    <div class="line"></div>
+                    <div class="calculator-results-results">
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Ilość paczek w jednej warstwie na pjł</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="onelayerpackscount">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Ilość warstw paczek na palecie</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="packslayerscount">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Ilość wszystkich paczek na pjł</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="allpackscount">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Waga PJŁ (Bez palety)</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="pjlweightnopalete">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Waga jednej całej PJŁ</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="onepjlweight">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Objętość jednej PJŁ [m³]</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="onepjlvolume">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Ilość palet w jednej warstwie na przestrzeni ładunkowej
+                            </div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="onelayerpalletecountoncargospace">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Ilość warstw palet na przestrzeni ładunkowej</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="palletelayerscountoncargospace">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Całkowita ilość palet na przestrzeni ładunkowej</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="palletecountoncargospace">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Waga całego ładunku</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="allloadweight">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Objętość całego ładunku [m³]</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="loadtotalvolume">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="calculator-result">
+                            <div class="calculator-result-title">Współczynnik wypełnienia p. ład. [%]</div>
+                            <div
+                                style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
+                                <div class="calculator-result-result" id="loadspacefill">Brak</div>
+                                <div class="solution-btn">Rozwiązanie</div>
+                            </div>
+                            <div class="calculator-solution" style="display:none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button" id="policz">Policz</div>
+            </div>
+            <div class="calculator-container" id="driverstimecalc" style="display: none;">
+                <div class="calculator-wrapper">
+                    <div class="input-title">
+                        <i class="fa-regular fa-pen"></i>
+                        <span>Dane</span>
+                    </div>
+                    <div class="inputs">
+                        <input type="text" placeholder="Odległość [KM]" id="odleglosc">
+                        <input type="text" placeholder="Średnia prędkość [KM/H]" id="speed">
+                        <input type="datetime-local" id="datastartu" lang="pl">
+                    </div>
+                </div>
+                <div class="calculator-wrapper" style="display: none;" id="loadandunloading">
+                    <div class="input-title">
+                        <i class="fa-regular fa-truck-clock"></i>
+                        <span>Załadunek i rozładunek</span>
+                    </div>
+                    <div class="inputs">
+                        <input type="text" placeholder="Czas załadunku (W minutach)" id="loadtime" max="500">
+                        <input type="text" placeholder="Czas rozładunku (W minutach)" id="unloadtime" max="500">
+                    </div>
+                </div>
+                <div class="calculator-wrapper">
+                    <div class="input-title">
+                        <i class="fa-regular fa-user"></i>
+                        <span>Czynności kierowcy</span>
+                    </div>
+                    <div class="inputs">
+                        <div class="checkbox-wrap">
+                            <input type="checkbox" id="longdrive">
+                            <span>Wydłużony czas jazdy</span>
+                        </div>
+                        <div class="checkbox-wrap">
+                            <input type="checkbox" id="shortsleep">
+                            <span>Skrócony czas odpoczynku</span>
+                        </div>
+                        <div class="checkbox-wrap">
+                            <input type="checkbox" id="isloadingandunloading">
+                            <span>Uczestniczy w załadunku i rozładunku</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="drivertime-results">
+                    <table class="drivetimerTable">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Od-Do</th>
+                                <th>Czynność</th>
+                                <th>Przejechane</th>
+                                <th>Pozostało</th>
+                                <th>Czas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="drivertime-data">
+                                <td>11.06.2025</td>
+                                <td>8:00-9:00</td>
+                                <td>Załadunek</td>
+                                <td>0</td>
+                                <td>450</td>
+                                <td>1h 20min</td>
+                            </tr>
+                            <tr class="drivertime-data">
+                                <td>11.06.2025</td>
+                                <td>9:00-13:30</td>
+                                <td>Jazda</td>
+                                <td>240</td>
+                                <td>210</td>
+                                <td>4h 30min</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="button" id="policz-czaspracy">Policz</div>
+            </div>
+        </div>
+        <footer class="footer">Strona tworzona przez Krupeczekk</footer>
+    </div>
+    <div class="calculator-calculator">
+        <div class="calculator-calculator-nav">
+            <span>Kalkulator</span>
+            <i class="fa-solid fa-xmark" onclick="ToggleCalculator()"></i>
+        </div>
+        <input type="text" class="calculator-display">
+        <div class="caluclator-buttons">
+            <button data-value="AC" class="operratorr">AC</button>
+            <button data-value="DEL" class="operratorr">DEL</button>
+            <button data-value="%" class="operratorr">%</button>
+            <button data-value="/" class="operratorr">/</button>
+            <button data-value="7">7</button>
+            <button data-value="8">8</button>
+            <button data-value="9">9</button>
+            <button data-value="*" class="operratorr">*</button>
+            <button data-value="4">4</button>
+            <button data-value="5">5</button>
+            <button data-value="6">6</button>
+            <button data-value="-" class="operratorr">-</button>
+            <button data-value="1">1</button>
+            <button data-value="2">2</button>
+            <button data-value="3">3</button>
+            <button data-value="+" class="operratorr">+</button>
+            <button data-value="0">0</button>
+            <button data-value="00">00</button>
+            <button data-value=".">.</button>
+            <button data-value="=" class="operratorr">=</button>
+        </div>
+    </div>
+</body>
+<script src="app.js"></script>
+<script src="config.js"></script>
+<script src="calculator.js"></script>
+</html>

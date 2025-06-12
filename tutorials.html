@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>KR Logistics - Definicje</title>
+</head>
+
+<body>
+    <div class="app">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><i class="fa-solid fa-truck"></i> KR Logistics</a>
+            </div>
+            <div class="toggle">
+                <a href="#"><i class="fa-solid fa-bars"></i></a>
+            </div>
+            <ul class="menu">
+                <li><a href="index.html" class="hoverline">Strona główna</a></li>
+                <li><a href="calculator.html" class="hoverline">Kalkulator</a></li>
+                <li><a href="definitions.html" class="hoverline">Definicje</a></li>
+                <li><a href="tutorials.html" class="hoverline">Poradniki</a></li>
+                <li><a href="tasks.html" class="hoverline">Zadania</a></li>
+                <li><a href="changelog.html" class="hoverline">Changelog</a></li>
+            </ul>
+        </nav>
+        <div class="line"></div>
+        <div class="view">
+            <div class="tutorials">
+                <div class="tutorial">
+                    <div class="tutorial-title">Liczenie jednej warstwy paczek na palecie</div>
+                    <div class="tutorial-desc">
+                        <div class="tuto-desc-title"><span>1</span> Dane.</div>
+                        <p>Przykładowe wymiary palety (Dł. x Szer. x Wys.):</p>
+                        <p>1200 x 800 x 144</p>
+                        <p>Przykładowe wymiary paczki (Dł. x Szer. x Wys.):</p>
+                        <p>250 x 300 x 150</p>
+                        <div class="tuto-desc-title"><span>2</span> Dzielenie dł. palety x dł. paczki | szer. palety
+                            x szer paczki.</div>
+                        <p>Podziel długość palety przez długość paczki oraz szerokość palety przez szerokość
+                            paczki:</p>
+                        <p>1200 : 250 = 4,8 (Zaokrąglij wynik) - 4</p>
+                        <p>800 : 300 = 2,66 (Zaokrąglij wynik) - 2</p>
+                        <p>Pomnóż pierwszy wynik przez drugi</p>
+                        <p>Wynik pierwszego mnożenia: 4 * 2 = 8</p>
+                        <div class="tuto-desc-title"><span>3</span> Dzielenie dł. palety x szer paczki | szer.
+                            palety x dł. paczki.</div>
+                        <p>1200 : 300 = 4</p>
+                        <p>800 : 250 = 3,2 (Zaokrąglij wynik) - 3</p>
+                        <p>Pomnóż pierwszy wynik przez drugi</p>
+                        <p>Wynik drugiego mnożenia: 3 * 4 = 12</p>
+                        <div class="tuto-desc-title"><span>4</span> Wybierz większy wynik.</div>
+                        <p>Wynik pierwszego mnożenia: 8</p>
+                        <p>Wynik drugiego mnożenia: 12</p>
+                        <p>Wybieramy 12 - Jest większy</p>
+                        <div class="tuto-desc-title"><span>5</span> To tyle. Końcowy wynik to 12.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">Strona tworzona przez Krupeczekk</footer>
+    </div>
+</body>
+<script src="app.js"></script>
+<script src="config.js"></script>
+
+</html>

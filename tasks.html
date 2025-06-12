@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>KR Logistics - Definicje</title>
+</head>
+
+<body>
+    <div class="app">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><i class="fa-solid fa-truck"></i> KR Logistics</a>
+            </div>
+            <div class="toggle">
+                <a href="#"><i class="fa-solid fa-bars"></i></a>
+            </div>
+            <ul class="menu">
+                <li><a href="index.html" class="hoverline">Strona główna</a></li>
+                <li><a href="calculator.html" class="hoverline">Kalkulator</a></li>
+                <li><a href="definitions.html" class="hoverline">Definicje</a></li>
+                <li><a href="tutorials.html" class="hoverline">Poradniki</a></li>
+                <li><a href="tasks.html" class="hoverline">Zadania</a></li>
+                <li><a href="changelog.html" class="hoverline">Changelog</a></li>
+                <li><a onclick="ToggleCalculator()" style="font-weight: 600;">Odpal kalkulator</a></li>
+            </ul>
+        </nav>
+        <div class="line"></div>
+        <div class="view">
+            <div class="task-categories-container">
+                <span style="font-size: 1rem; color: var(--title1-color);">Wybierz kategorię zadania</span>
+                <div class="task-categories">
+                    <div class="task-category">Obliczenia związane z transportem</div>
+                    <div class="task-category">Formowanie ładunku</div>
+                    <div class="task-category">Czas pracy kierowcy</div>
+                    <div class="task-category">Fakrury</div>
+                </div>
+            </div>
+            <div class="randomtask">Losuj zadanie</div>
+            <div class="task"></div>
+        </div>
+        <footer class="footer">Strona tworzona przez Krupeczekk</footer>
+    </div>
+    <div class="calculator-calculator">
+        <div class="calculator-calculator-nav">
+            <span>Kalkulator</span>
+            <i class="fa-solid fa-xmark" onclick="ToggleCalculator()"></i>
+        </div>
+        <input type="text" class="calculator-display">
+        <div class="caluclator-buttons">
+            <button data-value="AC" class="operratorr">AC</button>
+            <button data-value="DEL" class="operratorr">DEL</button>
+            <button data-value="%" class="operratorr">%</button>
+            <button data-value="/" class="operratorr">/</button>
+            <button data-value="7">7</button>
+            <button data-value="8">8</button>
+            <button data-value="9">9</button>
+            <button data-value="*" class="operratorr">*</button>
+            <button data-value="4">4</button>
+            <button data-value="5">5</button>
+            <button data-value="6">6</button>
+            <button data-value="-" class="operratorr">-</button>
+            <button data-value="1">1</button>
+            <button data-value="2">2</button>
+            <button data-value="3">3</button>
+            <button data-value="+" class="operratorr">+</button>
+            <button data-value="0">0</button>
+            <button data-value="00">00</button>
+            <button data-value=".">.</button>
+            <button data-value="=" class="operratorr">=</button>
+        </div>
+    </div>
+</body>
+<script src="app.js"></script>
+<script src="config.js"></script>
+<script src="calculator.js"></script>
+</html>
